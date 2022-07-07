@@ -4,7 +4,7 @@ import mgmt_co
 def initialize(num):
     data = {"company": 0, "path": ""}
     print(num, "つ目の運営会社を該当する数字で入力してください。")
-    print("GlobalX:1, NEXT FUNDS:2")
+    print("GlobalX or JPX-INDEX:1, NEXT FUNDS:2")
     while True:
         company_num = int(input())
         if company_num > 0:
@@ -36,6 +36,7 @@ print(stocks2_list)
 
 intersection_keys = stocks1_list.keys() & stocks2_list.keys()
 
+# TODO:東証のデータを参照し銘柄を表示する(https://www.jpx.co.jp/markets/statistics-equities/misc/01.html)
 for value in list(intersection_keys):
     dup_stocks[value] = stocks2_list.get(value)
 
