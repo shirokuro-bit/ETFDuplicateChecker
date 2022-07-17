@@ -1,4 +1,5 @@
 import mgmt_co
+import ref_tse
 
 
 def initialize(num):
@@ -25,20 +26,18 @@ def separate(data):
 
 
 dup_stocks = {}
+
 stock1 = initialize(1)
 stock2 = initialize(2)
 
 stocks1_list = separate(stock1)
 stocks2_list = separate(stock2)
 
-print(stocks1_list)
-print(stocks2_list)
-
 intersection_keys = stocks1_list.keys() & stocks2_list.keys()
 
-# TODO:東証のデータを参照し銘柄を表示する(https://www.jpx.co.jp/markets/statistics-equities/misc/01.html)
 for value in list(intersection_keys):
-    dup_stocks[value] = stocks2_list.get(value)
+    dup_stocks[value] = ref_tse.tse_listed_issues().get(value)
+
 
 print(dup_stocks)
 print(len(dup_stocks))
