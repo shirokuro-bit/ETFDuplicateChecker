@@ -8,6 +8,22 @@ FILE_DIR = "stock_information/"
 FILE_NAME = "JPXListedIssues.xls"
 
 
+def listed_issues_initialize():
+    is_file = path.isfile(path.join(FILE_DIR, FILE_NAME))
+    if is_file:
+        print("東証上場銘柄一覧データを更新しますか? Yes:y or No:n")
+        while True:
+            update = input()
+            if update == "y":
+                download_listed_issues()
+                break
+            elif update == "n":
+                break
+    else:
+        # パスが存在しないかファイルではない
+        download_listed_issues()
+
+
 def download_listed_issues():
     # Web上のファイルデータをダウンロード
     response = requests.get(URL)

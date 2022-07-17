@@ -27,6 +27,8 @@ def separate(data):
 
 dup_stocks = {}
 
+ref_tse.listed_issues_initialize()
+
 stock1 = initialize(1)
 stock2 = initialize(2)
 
